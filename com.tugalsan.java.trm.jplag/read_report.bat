@@ -1,0 +1,1 @@
+java -jar jplag-6.3.0-jar-with-dependencies.jar
