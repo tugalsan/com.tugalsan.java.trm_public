@@ -25,7 +25,7 @@
   </parent>
 
     <groupId>com.tugalsan.trm</groupId>
-    <artifactId>com.tugalsan.trm.migration.jakarta</artifactId>
+    <artifactId>com.tugalsan.java.trm.migration.jakarta</artifactId>
     <version>1.0.10-SNAPSHOT</version>
 
   <description>The aim of the tool is to take a web application written for Java EE 8 that
