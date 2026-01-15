@@ -24,7 +24,7 @@
     <version>34</version>
   </parent>
 
-    <groupId>com.tugalsan.trm</groupId>
+    <groupId>com.tugalsan.java</groupId>
     <artifactId>com.tugalsan.java.trm.migration.jakarta</artifactId>
     <version>1.0.10-SNAPSHOT</version>
 
