@@ -1,11 +1,11 @@
-package com.tugalsan.trm.changefiledate;
+package com.tugalsan.java.trm.changefiledate;
 
-import com.tugalsan.api.charset.client.TGS_CharSetLocaleTypes;
-import com.tugalsan.api.time.client.*;
-import com.tugalsan.api.file.server.*;
-import com.tugalsan.api.log.server.*;
-import com.tugalsan.api.os.server.TS_OsCpuUtils;
-import com.tugalsan.api.random.server.*;
+import module com.tugalsan.java.core.charset;
+import module com.tugalsan.java.core.time;
+import module com.tugalsan.java.core.file;
+import module com.tugalsan.java.core.log;
+import module com.tugalsan.java.core.os;
+import module com.tugalsan.java.core.random;
 import java.nio.file.*;
 import java.util.stream.IntStream;
 
@@ -17,33 +17,32 @@ public class Main {
     final private static TS_Log d = TS_Log.of(true, Main.class);
 
     public static void main(String... args) {
-        d.cr("jvm",TS_OsCpuUtils.getLoad_jvm());
-        d.cr("pro",TS_OsCpuUtils.getLoad_process());
-        d.cr("sys",TS_OsCpuUtils.getLoad_system());
-        d.cr("osh",TS_OsCpuUtils.getLoad_percent_oshi(500));
-        
-        if (true){
-            return;
-        }
-        
-        var a = TGS_Time.of();
+//        d.cr("jvm",TS_OsCpuUtils.getLoad_jvm());
+//        d.cr("pro",TS_OsCpuUtils.getLoad_process());
+//        d.cr("sys",TS_OsCpuUtils.getLoad_system());
+//        d.cr("osh",TS_OsCpuUtils.getLoad_percent_oshi(500));
+//        
+//        if (true){
+//            return;
+//        }
 
-        IntStream.range(0, 14).forEach(i -> {
-            a.incrementDay(1);
-            d.cr("main", a.toString_dateOnly(), a.dayOfWeek_returns_1_to_7(), a.isDayWork(), a.isDayWeekend(), a.getDayOfWeekName(TGS_CharSetLocaleTypes.TURKISH));
-        });
-
-        if (true) {
-            return;
-        }
-
+//        var a = TGS_Time.of();
+//
+//        IntStream.range(0, 14).forEach(i -> {
+//            a.incrementDay(1);
+//            d.cr("main", a.toString_dateOnly(), a.dayOfWeek_returns_1_to_7(), a.isDayWork(), a.isDayWeekend(), a.getDayOfWeekName(TGS_CharSetLocaleTypes.TURKISH));
+//        });
+//
+//        if (true) {
+//            return;
+//        }
 //        var dirPrefix = "\\\\10.0.0.222\\";
         var dirPrefix = "\\\\192.168.7.1\\";
 //        var dir = Path.of(dirPrefix + "kalite_destek\\1-Alt Yapı Yönetimi\\KY AY FR 9 - Alarm Listesi Formu");
 //        var dir = Path.of(dirPrefix + "kalite_destek\\2-Bilgi Güvenliği Yönetimi\\KY BG FR 1 - Bilgi Güvenliği Kontrol Formu");
         var dir = Path.of(dirPrefix + "kalite_destek\\11-Dokümante Bilgi\\SY DB FR 4 - Dokümante Edilmiş Bilgi Kontrolü Formu");
         dir(
-                dir, "-",
+                dir, " ",
                 18, 24,
                 0, 59,
                 0, 59
@@ -68,11 +67,11 @@ public class Main {
         d.cr("file", file);
         var fileLabel = TS_FileUtils.getNameLabel(file);
         var split = fileLabel.split(delim);
-        if (split.length < 2) {//FILENAME XX-XX-XXXX
-            d.ce("file", "fileLabel not proper", fileLabel, "skipped");
+        if (split.length < 2) {
+            d.ce("file", "fileLabel not proper FILENAME XXXX.XX.XX", fileLabel, "skipped");
             return;
         }
-        var dateLabel = TGS_Time.ofDate_YYYY_MM_DD(split[0]);
+        var dateLabel = TGS_Time.ofDate_YYYY_MM_DD(split[1]);
         if (dateLabel == null) {
             d.ce("file", "dateLabel NOT detected", "skipped");
             return;
